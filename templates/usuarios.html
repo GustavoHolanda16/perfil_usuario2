@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+  - Usuários
+{% endblock %}
+
+{% block conteudo %}
+    <p>
+      <a href="/usuarios/cadastrar" class="btn btn-primary">Cadastrar Usuário</a>
+    </p>
+    
+    <div class="container">
+        <div class="row">
+            {% for item in lista %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/100" alt="Perfil" /> <!-- Imagem genérica -->
+                    <h5>{{ item.nome }}</h5>
+                    <p>Email: {{ item.email }}</p>
+                    <a href="/usuarios/editar/{{ item.id }}" class="btn btn-secondary">Editar</a>
+                    <button onclick="window.location='/usuarios/excluir/{{ item.id }}'" class="btn delete">Excluir</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
